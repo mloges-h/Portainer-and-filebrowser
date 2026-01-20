@@ -1,0 +1,44 @@
+http://3.108.217.217:8081 - server 1
+http://13.203.229.220:8081 - server 2
+
+Portrainer (what, why) - managing containers, volumes, images etc and also it can integrate with clouds / k8s etc...
+
+docker run -d   --name portainer   --restart=always   -p 9443:9443   -v /var/run/docker.sock:/var/run/docker.sock   -v portainer_data:/data   portainer/portainer-ce:latest
+
+1. Home explained  (Live connect explain, just overview)
+2. Templates 
+3. Stacks (env,(before viewing goes environment) define stacks(stop and delete), migrate before delete the remote servers container)
+4. Environments (explain about docker stand alone
+5. registry (why need)
+5. Container (logs, restart and etc.. options explain about duplicates/edit options)
+6. Images (pull images options)
+7. networks
+8. volumes
+9. events
+10. Host and engine details
+11. nginx proxy done:
+12. env list  
+13. notifications (events controls portrainer)
+14. explain (general (backup plan), auth (MFA), help) 
+
+
+New: 
+Console access:
+image pulling from hub: (import/export) option
+Image option NFS/CIFS
+3 ways for env, direct env in templates, calling env in a image, or else using cifs,nfs or else gdrive or else changing 
+Group assignment (create a group, give manage access) we cant create role and team due to community edition
+Authentication: (LDAP)
+whitelabel:
+
+It has:
+
+| Feature             | Community Edition (FREE) | Business Edition (PAID) |
+| ------------------- | ------------------------ | ----------------------- |
+| Cost                | Free                     | Paid (annual)           |
+| RBAC                | Basic                    | Advanced                |
+| Audit Logging       | No                       | Yes                     |
+| Official Support    | No                       | Yes                     |
+| Enterprise Security | Limited                  | Enhanced                |
+| Registry Governance | No                       | Yes                     |
+| LDAP/SSO            | No                       | Yes                     |
