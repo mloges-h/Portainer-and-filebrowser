@@ -42,3 +42,30 @@ It has:
 | Enterprise Security | Limited                  | Enhanced                |
 | Registry Governance | No                       | Yes                     |
 | LDAP/SSO            | No                       | Yes                     |
+------------------------------------------------------------------------------------------------------------------------------------------------
+2. File browser implementation:
+
+Nginx entry:
+
+upstream backend_filebrowser {
+    server 10.250.55.126:9006;
+}
+
+docker run -d \
+  --name twixor-filebrowser \
+  -p 9006:80 \
+  -v /opt:/srv \
+  -v /opt/filebrowser/database:/database \
+  -v /opt/filebrowser/config:/config \
+  -e BASE_URL=/filebrowser \
+  -e PUID=0 \
+  -e PGID=0 \
+  --restart unless-stopped \
+  filebrowser/filebrowser:s6
+
+docker exec -it twixor-filebrowser vi /config/settings.json
+"baseURL": "/filebrowser", (what is the name you given in nginx location we use that in basURL)
+docker restart twixor-filebrowser
+docker exec -it twixor-filebrowser grep baseURL /config/settings.json
+
+docker logs for password
